@@ -178,7 +178,7 @@ class _HomeViewState extends State<HomeView> {
                 decoration: const BoxDecoration(),
                 child: const Center(
                   child: Icon(
-                    Icons.plus_one,
+                    Entypo.plus,
                     color: AppThemaColors.white,
                   ),
                 ),
@@ -194,6 +194,7 @@ class _HomeViewState extends State<HomeView> {
     const double width = 20;
     return Container(
       height: 120,
+      decoration: const BoxDecoration(),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -236,12 +237,13 @@ class _HomeViewState extends State<HomeView> {
   Widget buildRecentActivity() {
     return Container(
       height: 180,
+      decoration: const BoxDecoration(),
       child: ListView(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         children: [
           ActivityCard(
-            icon: Icons.shopify,
+            icon: FontAwesome.shopping_cart,
             iconColor: Colors.orange,
             title: "Minimarket",
             subtitle: "Supermarkets",
@@ -250,7 +252,7 @@ class _HomeViewState extends State<HomeView> {
             event: () {},
           ),
           ActivityCard(
-            icon: Icons.games_outlined,
+            icon: Ionicons.game_controller,
             iconColor: Colors.green,
             title: "Steam",
             subtitle: "Supermarkets",
@@ -259,7 +261,7 @@ class _HomeViewState extends State<HomeView> {
             event: () {},
           ),
           ActivityCard(
-            icon: Icons.u_turn_right,
+            icon: MaterialCommunityIcons.arrow_right_top_bold,
             iconColor: Colors.purple,
             title: "Steam",
             subtitle: "Supermarkets",
@@ -275,6 +277,7 @@ class _HomeViewState extends State<HomeView> {
   Widget buildNewForPoints() {
     return Container(
       height: 110,
+      decoration: const BoxDecoration(),
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
