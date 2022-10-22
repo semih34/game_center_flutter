@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 import 'package:game_center/core/constants/sample_data/app_data.dart';
 import 'package:game_center/core/constants/thema/app_thema_colors.dart';
+import 'package:game_center/core/init/global_providers/navigation_provider.dart';
 import 'package:game_center/product/widgets/activity_card.dart';
 import 'package:game_center/product/widgets/credit_card.dart';
+import 'package:game_center/product/widgets/custom_appbar.dart';
 import 'package:game_center/product/widgets/custom_avatar.dart';
 import 'package:game_center/product/widgets/custom_bottom_bar.dart';
 import 'package:game_center/product/widgets/point_card.dart';
+import 'package:game_center/views/store/view/store.dart';
+import 'package:provider/provider.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -20,51 +24,15 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppThemaColors.black,
-      appBar: buildAppBar(),
-      body: buildBody(),
+      appBar: const CustomAppBar(),
+      body: context.watch<NavigationProvider>().currentPosition == 2
+          ? const Store()
+          : buildBody(),
       bottomNavigationBar: CustomBottomBar(
         onClick: (int i) {
           print(i);
         },
       ),
-    );
-  }
-
-  AppBar buildAppBar() {
-    return AppBar(
-      backgroundColor: AppThemaColors.black,
-      leading: CustomAvatar(
-        url: SampleAppData.user.avatar,
-        event: () {},
-        size: 50,
-      ),
-      elevation: 0,
-      centerTitle: false,
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Hi,${SampleAppData.user.name}",
-            style: const TextStyle(
-              color: AppThemaColors.white,
-              fontSize: 18,
-            ),
-          ),
-          const Text(
-            "Welcome back to Banky",
-            style: TextStyle(
-              color: AppThemaColors.lightWhite,
-              fontSize: 14,
-            ),
-          ),
-        ],
-      ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Ionicons.notifications_outline),
-        )
-      ],
     );
   }
 

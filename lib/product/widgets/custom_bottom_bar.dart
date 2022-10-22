@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 import '../../core/constants/thema/app_thema_colors.dart';
+import 'package:provider/provider.dart';
+
+import '../../core/init/global_providers/navigation_provider.dart';
 
 class CustomBottomBar extends StatelessWidget {
   final Function(int i) onClick;
@@ -21,20 +24,21 @@ class CustomBottomBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          buildBottomItem("Home", Feather.home, 1),
-          buildBottomItem("Payments", Ionicons.card, 2),
-          buildBottomItem("Store", Entypo.grid, 3),
-          buildBottomItem("Support", Feather.message_square, 4),
-          buildBottomItem("Settings", AntDesign.setting, 5),
+          buildBottomItem(context, "Home", Feather.home, 0),
+          buildBottomItem(context, "Payments", Ionicons.card, 1),
+          buildBottomItem(context, "Store", Entypo.grid, 2),
+          buildBottomItem(context, "Support", Feather.message_square, 3),
+          buildBottomItem(context, "Settings", AntDesign.setting, 4),
         ],
       ),
     );
   }
 
-  Widget buildBottomItem(String title, IconData icon, int index) {
+  Widget buildBottomItem(
+      BuildContext context, String title, IconData icon, int index) {
     return InkWell(
       onTap: () {
-        onClick(index);
+        context.read<NavigationProvider>().changePosition(index);
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -42,13 +46,19 @@ class CustomBottomBar extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: AppThemaColors.white,
+            color: AppThemaColors.white.withOpacity(
+                context.watch<NavigationProvider>().currentPosition == index
+                    ? 1
+                    : 0.4),
             size: 35,
           ),
           Text(
             title,
-            style: const TextStyle(
-              color: AppThemaColors.white,
+            style: TextStyle(
+              color: AppThemaColors.white.withOpacity(
+                  context.watch<NavigationProvider>().currentPosition == index
+                      ? 1
+                      : 0.4),
               fontSize: 14,
             ),
           ),
