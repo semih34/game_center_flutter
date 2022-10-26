@@ -30,9 +30,10 @@ class _HomeViewState extends State<HomeView> {
           : buildBody(),
       bottomNavigationBar: CustomBottomBar(
         onClick: (int i) {
-          print(i);
+          //print(i);
         },
       ),
+      extendBody: true,
     );
   }
 

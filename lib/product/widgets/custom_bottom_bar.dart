@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
@@ -12,25 +14,32 @@ class CustomBottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      decoration: BoxDecoration(
-        color: Colors.white10.withOpacity(0.0001),
-        //color: Colors.transparent,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+    return ClipRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(
+          sigmaX: 5.0,
+          sigmaY: 5.0,
         ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          buildBottomItem(context, "Home", Feather.home, 0),
-          buildBottomItem(context, "Payments", Ionicons.card, 1),
-          buildBottomItem(context, "Store", Entypo.grid, 2),
-          buildBottomItem(context, "Support", Feather.message_square, 3),
-          buildBottomItem(context, "Settings", AntDesign.setting, 4),
-        ],
+        child: Container(
+          height: 100,
+          decoration: BoxDecoration(
+            color: Colors.blue.withOpacity(0.18),
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(30),
+              topRight: Radius.circular(30),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              buildBottomItem(context, "Home", Foundation.home, 0),
+              buildBottomItem(context, "Payments", Ionicons.card, 1),
+              buildBottomItem(context, "Store", Entypo.grid, 2),
+              buildBottomItem(context, "Support", Feather.message_square, 3),
+              buildBottomItem(context, "Settings", Ionicons.settings_sharp, 4),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -50,16 +59,17 @@ class CustomBottomBar extends StatelessWidget {
             color: AppThemaColors.white.withOpacity(
                 context.watch<NavigationProvider>().currentPosition == index
                     ? 1
-                    : 0.4),
+                    : 0.7),
             size: 35,
           ),
           Text(
             title,
             style: TextStyle(
+              fontWeight: FontWeight.bold,
               color: AppThemaColors.white.withOpacity(
                   context.watch<NavigationProvider>().currentPosition == index
                       ? 1
-                      : 0.4),
+                      : 0.7),
               fontSize: 14,
             ),
           ),

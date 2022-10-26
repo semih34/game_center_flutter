@@ -148,21 +148,22 @@ class Store extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        buildNewList(),
+        buildNewList("New", SampleAppData.points),
+        buildNewList("Bestsellers", SampleAppData.bestsellers),
       ],
     );
   }
 
-  Widget buildNewList() {
+  Widget buildNewList(String title, List<Point> list) {
     return Container(
       height: 220,
       margin: const EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "New",
-            style: TextStyle(
+          Text(
+            title,
+            style: const TextStyle(
               color: AppThemaColors.white,
               fontWeight: FontWeight.bold,
               fontSize: 20,
@@ -175,9 +176,9 @@ class Store extends StatelessWidget {
             child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
-              itemCount: SampleAppData.points.length,
+              itemCount: list.length,
               itemBuilder: (BuildContext context, int index) {
-                Point point = SampleAppData.points[index];
+                Point point = list[index];
                 return StoreCard(
                   url: point.url,
                   title: point.title,

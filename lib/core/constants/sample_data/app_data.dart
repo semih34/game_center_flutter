@@ -53,6 +53,28 @@ class SampleAppData {
     ),
   ];
 
+  static List<Point> bestsellers = [
+    Point(
+      title: "Phasmophobia",
+      subtitle: "Horror",
+      url: "https://static-cdn.jtvnw.net/ttv-boxart/518184_IGDB-272x380.jpg",
+      pt: 150,
+    ),
+    Point(
+      title: "Terraria",
+      subtitle: "Platformer",
+      url:
+          "https://cdn.cloudflare.steamstatic.com/steam/apps/105600/header.jpg?t=1666290860",
+      pt: 75,
+    ),
+    Point(
+        title: "Elden Ring",
+        subtitle: "Action/RPG",
+        url:
+            "https://image.api.playstation.com/vulcan/ap/rnd/202108/0410/2odx6gpsgR6qQ16YZ7YkEt2B.png",
+        pt: 550)
+  ];
+
   static User user = User(
     avatar:
         "https://avatars.githubusercontent.com/u/10244761?s=400&u=4431ef3bed7c9dad72c6c3546deca3d93e78aac3&v=4",
